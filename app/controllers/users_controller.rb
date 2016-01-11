@@ -6,10 +6,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    binding.pry
     if @user.save
       log_in(@user)
-      redirect_to root_path
+      redirect_to tasks_path
     else
       render :new
     end
@@ -19,6 +18,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 end
