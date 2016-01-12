@@ -2,10 +2,14 @@
 
 }
 
-.editing {
+.hide_form .edit_task {
   display: none;
 }
 
-.displaying {
+.hide_name .task_name {
+  display: none;
+}
 
+.task_name {
+  font-weight: bold;
 }

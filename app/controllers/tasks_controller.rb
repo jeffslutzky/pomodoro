@@ -4,12 +4,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
-    @task.user = current_user
-    @task.save
-    respond_to do |format|
-      format.html { redirect_to user_path(current_user.id) }
-      format.js { }
+    if request.xhr?
+      task = Task.create(task_params)
+      binding.pry
+      html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
+      render json: {template: html_string}
     end
   end
 
@@ -20,9 +19,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.name = task_params[:name]
     task.save
-    html_string = render_to_string "tasks/_task", locals: {task: task}
-    binding.pry
-    redirect_to user_path(task.user)
+    html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
+    render json: {template: html_string}
   end
 
   def show
