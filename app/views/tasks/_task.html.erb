@@ -1,8 +1,5 @@
 <div data-id="<%= task.id %>">
   Name: <%= task.name %><br />
-  <%= form_for [@user, task] do |f| %>
-    <%= f.text_field :name %>
-  <% end %>
   Pomodoros completed: <%= task.pomodoros %><br />
   Start a new pomodoro for this task<br />
   Update this task<br />

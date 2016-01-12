@@ -1,0 +1,17 @@
+<p>Here are all your tasks.</p>
+
+<p>Add a new task</p>
+<%= form_for @user, url: user_path, remote: true do |f| %>
+  <%= f.text_field :name, placeholder: "name of task" %><br />
+  <%= f.submit %>
+<% end %>
+
+
+<ul>
+  <% @user.tasks.each do |task| %>
+    <%= form_for [@user, task], remote: true do |f| %>
+      <%= f.text_field :name %>
+    <% end %>
+    <%= render task %>
+  <% end %>
+</ul>

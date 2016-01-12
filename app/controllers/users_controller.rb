@@ -8,12 +8,15 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       log_in(@user)
-      redirect_to user_tasks_path(@user.id)
+      redirect_to user_path(@user.id)
     else
       render :new
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
 
   private
 

@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     @task.user = current_user
     @task.save
     respond_to do |format|
-      format.html { redirect_to user_tasks_path(current_user.id) }
+      format.html { redirect_to user_path(current_user.id) }
       format.js { }
     end
   end
@@ -17,6 +17,12 @@ class TasksController < ApplicationController
   end
 
   def update
+    task = Task.find(params[:id])
+    task.name = task_params[:name]
+    task.save
+    html_string = render_to_string "tasks/_task", locals: {task: task}
+    binding.pry
+    redirect_to user_path(task.user)
   end
 
   def show
@@ -32,7 +38,7 @@ class TasksController < ApplicationController
     @data_id = @task.id
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to user_tasks_path(current_user.id) }
+      format.html { redirect_to user_path(current_user.id) }
       format.js { render "destroy", :locals => { :id => @data_id} }
     end
   end
