@@ -1,8 +1,12 @@
 <div data-id="<%= task.id %>">
   Name: <%= task.name %><br />
+  <%= form_for [@user, task] do |f| %>
+    <%= f.text_field :name %>
+  <% end %>
   Pomodoros completed: <%= task.pomodoros %><br />
   Start a new pomodoro for this task<br />
   Update this task<br />
+  <%= button_tag "Update this task", {class: "update"} %>
   <%= button_to "Delete this task", user_task_path(current_user, task), method: "delete", remote: true %>
   <br />
 </div>
