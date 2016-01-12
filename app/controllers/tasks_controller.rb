@@ -16,6 +16,8 @@ class TasksController < ApplicationController
     end
 
     def index
+      @user = current_user
+      @task = Task.new
     end
 
     def destroy

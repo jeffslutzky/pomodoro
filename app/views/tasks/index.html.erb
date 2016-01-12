@@ -1,1 +1,20 @@
-Here are all your tasks.
+<p>Here are all your tasks.</p>
+
+<p>Add a new task</p>
+<%= form_for @task, remote: true do |f| %>
+  <%= f.text_field :name, placeholder: "name of task" %><br />
+  <%= f.submit %>
+<% end %>
+
+
+<ul>
+  <% @user.tasks.each do |task| %>
+    <li>
+      Name:<%= task.name %></p>
+      # of pomodoros: <%= task.pomodoros %><br />
+      Start a new pomodoro for this task<br />
+      Update this task<br />
+      Delete this task<br />
+    <li>
+  <% end %>
+</ul>
