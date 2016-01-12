@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       log_in(@user)
-      redirect_to tasks_path
+      redirect_to user_tasks_path(@user.id)
     else
       render :new
     end
@@ -20,4 +20,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
+
 end
