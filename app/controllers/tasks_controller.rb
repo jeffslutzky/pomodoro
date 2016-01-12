@@ -28,6 +28,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @data_id = @task.id
+    @task.destroy
+    respond_to do |format|
+      format.html { redirect_to user_tasks_path(current_user.id) }
+      format.js { render "destroy", :locals => { :id => @data_id} }
+    end
   end
 
   private

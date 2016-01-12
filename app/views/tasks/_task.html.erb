@@ -1,7 +1,8 @@
-<p>
+<div data-id="<%= task.id %>">
   Name: <%= task.name %><br />
   Pomodoros completed: <%= task.pomodoros %><br />
   Start a new pomodoro for this task<br />
   Update this task<br />
-  Delete this task<br />
-</p>
+  <%= button_to "Delete this task", user_task_path(current_user, task), method: "delete", remote: true %>
+  <br />
+</div>
