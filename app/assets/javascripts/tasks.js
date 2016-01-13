@@ -34,29 +34,29 @@ $(function(){
     $(this).parents(".task_form").children(".pomodoros").html(newNum)
 
     // timer
-    timer = $(this).parent().siblings("#timer");
+    timer = $(this).parent().siblings(".timer");
     var mins = .1; // change to 25
     var secs = mins * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
     setTimeout(countdown, 1000);
     function countdown() {
-        currentMinutes = Math.floor(secs / 60);
-        currentSeconds = secs % 60;
-        if (currentSeconds <= 9) {
-          currentSeconds = "0" + currentSeconds;
-        }
-        secs--;
+      currentMinutes = Math.floor(secs / 60);
+      currentSeconds = secs % 60;
+      if (currentSeconds <= 9) {
+        currentSeconds = "0" + currentSeconds;
+      }
+      secs--;
 
-        // get the timer for the right task
+      // get the timer for the right task
 
-        timer.html(currentMinutes + ":" + currentSeconds);
-        if (secs > -1) {
-          setTimeout(countdown, 1000);
-        } else {
-          alert("Time's up!");
-          timer.html("");
-        }
+      timer.html(currentMinutes + ":" + currentSeconds);
+      if (secs > -1) {
+        setTimeout(countdown, 1000);
+      } else {
+        alert("Time's up!");
+        timer.html("");
+      }
     }
 
 
