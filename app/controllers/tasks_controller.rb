@@ -6,7 +6,8 @@ class TasksController < ApplicationController
   def create
     if request.xhr?
       task = Task.create(task_params)
-      binding.pry
+      task.user = current_user
+      task.save
       html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
       render json: {template: html_string}
     end
