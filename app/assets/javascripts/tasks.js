@@ -38,8 +38,8 @@ $(function(){
     var secs = mins * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
-    setTimeout(Decrement, 1000);
-    function Decrement() {
+    setTimeout(countdown, 1000);
+    function countdown() {
         currentMinutes = Math.floor(secs / 60);
         currentSeconds = secs % 60;
         if (currentSeconds <= 9) {
@@ -48,7 +48,7 @@ $(function(){
         secs--;
         $("#timer").html(currentMinutes + ":" + currentSeconds);
         if (secs > -1) {
-          setTimeout(Decrement, 1000);
+          setTimeout(countdown, 1000);
         } else {
           alert("Time's up!");
           $("#timer").html("");
