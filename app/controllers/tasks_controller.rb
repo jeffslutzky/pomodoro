@@ -35,7 +35,7 @@ class TasksController < ApplicationController
     @id = task.id
     task.destroy
     respond_to do |format|
-      format.js { render 'destroy', id: @id}
+      format.js { render 'destroy' }
     end
   end
 
