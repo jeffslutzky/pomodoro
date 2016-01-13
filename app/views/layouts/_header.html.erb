@@ -1,3 +1,4 @@
 <% if user_signed_in? %>
-  <%= link_to "Log out", logout_path %>
+  <p><%= link_to "Log out", logout_path %></p>
+  <p><%= link_to "Your task page", user_path(current_user) %></p>
 <% end %>

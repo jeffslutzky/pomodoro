@@ -1,3 +1,5 @@
+<% if current_user == @user %>
+
 <p>Here are all your tasks.</p>
 
 <p>Add a new task</p>
@@ -19,3 +21,9 @@
   <% end %>
 </p>
 </div>
+
+<% else %>
+
+<p>Sorry, a user's page is only visible by that user.</p>
+
+<% end %>
