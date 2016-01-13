@@ -41,6 +41,7 @@ $(function(){
         alert("Time's up!");
         return;
       }
+      $("#timer").html(count + " secs");
     }
   })
 
