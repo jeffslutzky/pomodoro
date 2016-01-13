@@ -29,8 +29,9 @@ $(function(){
   $(".timer_button").click(function(){
 
     // add 1 to displayed number of pomodoros
-    var newTotal = parseInt($(this).parents(".task_form").children(".pomodoros").html()) + 1;
-    $(this).parents(".task_form").children(".pomodoros").html(newTotal);
+    var total = parseInt($(this).parents(".task_form").children(".pomodoros").html());
+    var newTotal = total;
+    var self = $(this);
 
     // countdown timer
     timer = $(this).parent().siblings(".timer");
@@ -50,7 +51,13 @@ $(function(){
       if (secs > -1) {
         setTimeout(countdown, 1000);
       } else {
-        alert("Time's up!");
+        newTotal++;
+        if (newTotal % 4 === 0) {
+          alert("You deserve a longer break! Take 25-30 minutes!");
+        } else {
+          alert("Time for a 5-minute break!");
+        }
+        self.parents(".task_form").children(".pomodoros").html(newTotal);
         timer.html("");
       }
     }
