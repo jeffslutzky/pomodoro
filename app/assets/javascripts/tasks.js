@@ -28,7 +28,20 @@ $(function(){
   })
 
   $(".timer_button").click(function(){
-    alert("New pomodoro created.")
-    debugger;
+    // increase displayed number of pomodoros by 1
+    var newNum = parseInt($(this).parents(".task_form").children(".pomodoros").html()) + 1
+    $(this).parents(".task_form").children(".pomodoros").html(newNum)
+    // timer
+    var count = 5;
+    var counter = setInterval(timer, 1000);
+    function timer(){
+      count = count - 1;
+      if (count <= 0) {
+        clearInterval(counter);
+        alert("Time's up!");
+        return;
+      }
+    }
   })
+
 })
