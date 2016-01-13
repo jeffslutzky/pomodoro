@@ -28,21 +28,34 @@ $(function(){
   })
 
   $(".timer_button").click(function(){
-    // increase displayed number of pomodoros by 1
+
+    // add 1 to displayed number of pomodoros
     var newNum = parseInt($(this).parents(".task_form").children(".pomodoros").html()) + 1
     $(this).parents(".task_form").children(".pomodoros").html(newNum)
+
     // timer
-    var count = 5;
-    var counter = setInterval(timer, 1000);
-    function timer(){
-      count = count - 1;
-      if (count <= 0) {
-        clearInterval(counter);
-        alert("Time's up!");
-        return;
-      }
-      $("#timer").html(count + " secs");
+    var mins = .1; // change to 25
+    var secs = mins * 60;
+    var currentSeconds = 0;
+    var currentMinutes = 0;
+    setTimeout(Decrement, 1000);
+    function Decrement() {
+        currentMinutes = Math.floor(secs / 60);
+        currentSeconds = secs % 60;
+        if (currentSeconds <= 9) {
+          currentSeconds = "0" + currentSeconds;
+        }
+        secs--;
+        $("#timer").html(currentMinutes + ":" + currentSeconds);
+        if (secs > -1) {
+          setTimeout(Decrement, 1000);
+        } else {
+          alert("Time's up!");
+          $("#timer").html("");
+        }
     }
+
+
   })
 
 })
