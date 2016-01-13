@@ -1,8 +1,7 @@
 $(function(){
-  //click on task name to update/change it
+  //click on task name to show update form
   $(".update").click(function(){
     $(this).parent().addClass("editing");
-
   })
 
   $(".new_task").on("ajax:success", function(event, data, status, xhr){
@@ -30,10 +29,10 @@ $(function(){
   $(".timer_button").click(function(){
 
     // add 1 to displayed number of pomodoros
-    var newNum = parseInt($(this).parents(".task_form").children(".pomodoros").html()) + 1
-    $(this).parents(".task_form").children(".pomodoros").html(newNum)
+    var newTotal = parseInt($(this).parents(".task_form").children(".pomodoros").html()) + 1;
+    $(this).parents(".task_form").children(".pomodoros").html(newTotal);
 
-    // timer
+    // countdown timer
     timer = $(this).parent().siblings(".timer");
     var mins = .1; // change to 25
     var secs = mins * 60;
@@ -47,9 +46,6 @@ $(function(){
         currentSeconds = "0" + currentSeconds;
       }
       secs--;
-
-      // get the timer for the right task
-
       timer.html(currentMinutes + ":" + currentSeconds);
       if (secs > -1) {
         setTimeout(countdown, 1000);
@@ -58,8 +54,6 @@ $(function(){
         timer.html("");
       }
     }
-
-
   })
 
 })
