@@ -1,11 +1,10 @@
 <% if current_user == @user %>
 
-<p>Here are all your tasks.</p>
+<p>Hi, <%= current_user.name %>. Here are all your tasks.</p>
 
-<p>Add a new task</p>
 <%= form_for Task.new, url: user_tasks_path(@user), remote: true do |f| %>
   <%= f.text_field :name %><br />
-  <%= f.submit %>
+  <%= f.submit("Add a new task")%>
 <% end %>
 
 
