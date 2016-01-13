@@ -28,4 +28,7 @@ $(function(){
     $(this).submit();
   })
 
+  $(".timer_button").click(function(){
+    alert("New pomodoro created.")
+  })
 })

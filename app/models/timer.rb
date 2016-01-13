@@ -16,5 +16,7 @@ class Timer < ActiveRecord::Base
     self.created_at + (25*60)
   end
 
+  
+
 
 end

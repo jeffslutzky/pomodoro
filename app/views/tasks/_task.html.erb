@@ -3,7 +3,7 @@
     <%= task.name %><br />
   </div>
   Pomodoros completed: <%= task.pomodoros %><br />
-  Start a new pomodoro for this task<br />
+  <%= button_to "Start a new pomodoro for this task", user_task_timers_path(current_user, task), class: "timer_button" %>
   <%= button_to "Delete this task", user_task_path(current_user, task), method: "delete", remote: true %>
   <br />
 </div>

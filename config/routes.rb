@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
   resources :users do
-    resources :tasks
+    resources :tasks do
+      resources :timers
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

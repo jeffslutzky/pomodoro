@@ -8,6 +8,7 @@
 
 
 <div class="container">
+  <p>
   <% @user.tasks.each do |task| %>
     <div class="task_parent hide_form">
       <%= form_for [@user, task], remote: true do |f| %>
@@ -16,4 +17,5 @@
       <%= render task %>
     </div>
   <% end %>
+</p>
 </div>
