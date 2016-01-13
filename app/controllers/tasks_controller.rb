@@ -4,13 +4,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    if request.xhr?
-      task = Task.create(task_params)
-      task.user = current_user
-      task.save
-      html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
-      render json: {template: html_string}
-    end
+    task = Task.create(task_params)
+    task.user = current_user
+    task.save
+    html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
+    render json: {template: html_string}
   end
 
   def edit
@@ -33,12 +31,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
-    @data_id = @task.id
-    @task.destroy
+    task = Task.find(params[:id])
+    @id = task.id
+    task.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user.id) }
-      format.js { render "destroy", :locals => { :id => @data_id} }
+      format.js { render 'destroy', id: @id}
     end
   end
 

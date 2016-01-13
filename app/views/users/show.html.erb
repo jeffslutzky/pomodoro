@@ -1,28 +1,26 @@
 <% if current_user == @user %>
 
-<p>Hi, <%= current_user.name %>. Here are all your tasks.</p>
+  <p>Hi, <%= current_user.name %>. Here are all your tasks.</p>
 
-<%= form_for Task.new, url: user_tasks_path(@user), remote: true do |f| %>
-  <%= f.text_field :name %><br />
-  <%= f.submit("Add a new task")%>
-<% end %>
-
-
-<div class="container">
-  <p>
-  <% @user.tasks.each do |task| %>
-    <div class="task_parent hide_form">
-      <%= form_for [@user, task], remote: true do |f| %>
-        <%= f.text_field :name %>
-      <% end %>
-      <%= render task %>
-    </div>
+  <%= form_for Task.new, url: user_tasks_path(@user), remote: true do |f| %>
+    <%= f.text_field :name %><br />
+    <%= f.submit("Add a new task")%>
   <% end %>
-</p>
-</div>
+  <br />
+
+  <div class="container">
+    <% @user.tasks.each do |task| %>
+      <div class="task_parent hide_form">
+        <%= form_for [@user, task], remote: true do |f| %>
+          <%= f.text_field :name %>
+        <% end %>
+        <%= render task %>
+      </div>
+    <% end %>
+  </div>
 
 <% else %>
 
-<p>Sorry, a user's page is only visible by that user.</p>
+  <p>Sorry, a user's page is only visible by that user.</p>
 
 <% end %>
