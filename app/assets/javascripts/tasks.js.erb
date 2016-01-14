@@ -5,6 +5,10 @@ $(function(){
     $(this).find("input:text").val("");
     var template = $(data.template);
     $(".container").append(template);
+    // if a pomodoro is active, hide start button for newly-added task
+    if (pomodoro === true) {
+      template.find(".start_button").addClass("hide_start_button");
+    };
   })
 
 
@@ -37,7 +41,7 @@ $(function(){
     // hide all start buttons to avoid multiple pomodoros
     $(".start_button").addClass("hide_start_button");
     $(".timer").html("<br/>");
-
+    pomodoro = true;
     // get displayed number of pomodoros
     var total = parseInt($(this).parents(".task_form").children(".pomodoros").html());
     var newTotal = total;
@@ -72,6 +76,7 @@ $(function(){
         timer.html("");
         $(".start_button").removeClass("hide_start_button");
         $(".timer").html("");
+        pomodoro = false;
       }
     }
   })
