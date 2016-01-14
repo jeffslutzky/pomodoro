@@ -12,11 +12,4 @@
 class Timer < ActiveRecord::Base
   belongs_to :task
 
-  # def end_time
-  #   self.created_at + (25*60)
-  # end
-
-
-
-
 end

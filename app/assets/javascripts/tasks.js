@@ -30,7 +30,11 @@ $(function(){
   })
 
 
-  $(".container").on("click", ".timer_button", function(){
+  $(".container").on("click", ".start_button", function(){
+    // hide all start buttons to avoid multiple pomodoros
+    $(".start_button").addClass("hide_start_button");
+    $(".timer").html("<br/>");
+
     // get displayed number of pomodoros
     var total = parseInt($(this).parents(".task_form").children(".pomodoros").html());
     var newTotal = total;
@@ -38,8 +42,7 @@ $(function(){
 
     // countdown timer
     timer = $(this).parent().siblings(".timer");
-    var mins = .05; // change to 25
-    var secs = mins * 60;
+    var secs = 4; // change to 25
     var currentSeconds = 0;
     var currentMinutes = 0;
     setTimeout(countdown, 1000);
@@ -61,9 +64,11 @@ $(function(){
         } else {
           alert("Time for a 5-minute break!");
         }
-        // on completion, add 1 to displayed number of pomodoros and remove timer
+        // on completion, add 1 to displayed number of pomodoros, remove timer, restore start buttons
         self.parents(".task_form").children(".pomodoros").html(newTotal);
         timer.html("");
+        $(".start_button").removeClass("hide_start_button");
+        $(".timer").html("");
       }
     }
   })

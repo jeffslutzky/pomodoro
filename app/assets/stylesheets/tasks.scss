@@ -2,6 +2,10 @@
   display: none;
 }
 
+.hide_start_button {
+  display: none;
+}
+
 .hide_name .task_name {
   display: none;
 }
@@ -13,9 +17,13 @@
 .timer {
   color: red;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .pomodoros {
+  display:inline-block;
+}
+
+.frame {
   display:inline-block;
 }
