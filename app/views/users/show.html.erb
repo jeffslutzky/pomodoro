@@ -10,12 +10,9 @@
 
   <div class="container">
     <% @user.tasks.each do |task| %>
-      <div class="task_parent hide_form">
-        <%= form_for [@user, task], remote: true do |f| %>
-          <%= f.text_field :name %>
-        <% end %>
+
         <%= render task %>
-      </div>
+
     <% end %>
   </div>
 
