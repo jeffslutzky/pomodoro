@@ -42,7 +42,7 @@ $(function(){
 
     // countdown timer
     timer = $(this).parent().siblings(".timer");
-    var secs = 4; // change to 25
+    var secs = 25 * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
     setTimeout(countdown, 1000);

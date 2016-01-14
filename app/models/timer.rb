@@ -6,7 +6,6 @@
 #  task_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  end_time   :datetime
 #
 
 class Timer < ActiveRecord::Base
