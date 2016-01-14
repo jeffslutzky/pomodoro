@@ -1,6 +1,7 @@
 <% if current_user == @user %>
 
   <p>Hi, <%= current_user.name %>. Here are all your tasks.</p>
+  <p>Double-click a task to change its name.</p>
 
   <%= form_for Task.new, url: user_tasks_path(@user), remote: true do |f| %>
     <%= f.text_field :name %><br />
@@ -10,9 +11,7 @@
 
   <div class="container">
     <% @user.tasks.each do |task| %>
-
         <%= render task %>
-
     <% end %>
   </div>
 

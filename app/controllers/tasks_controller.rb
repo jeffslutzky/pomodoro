@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     task = Task.create(task_params)
     task.user = current_user
     task.save
-    html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
+    html_string = render_to_string "tasks/_task", locals: {task: task, current_user: current_user}, layout: false
     render json: {template: html_string}
   end
 
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.name = task_params[:name]
     task.save
-    html_string = render_to_string "tasks/_task", locals: {task: task}, layout: false
+    html_string = render_to_string "tasks/_task", locals: {task: task, current_user: current_user}, layout: false
     render json: {template: html_string}
   end
 
