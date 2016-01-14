@@ -1,14 +1,17 @@
+<%= render 'layouts/header' %>
+
 <% if current_user == @user %>
 
   <p>Hi, <%= current_user.name %>. Here are all your tasks.</p>
 
   <%= form_for Task.new, url: user_tasks_path(@user), remote: true do |f| %>
+    <%= f.label "Add a new task:" %><br />
     <%= f.text_field :name %><br />
-    <%= f.submit("Add a new task")%>
+    <%= f.submit "Add task" %>
   <% end %>
   <br />
 
-  <p>Double-click a task to change its name.</p>
+  <p>Double-click a task below to change its name.</p>
   <div class="container">
     <% @user.tasks.each do |task| %>
         <%= render task %>

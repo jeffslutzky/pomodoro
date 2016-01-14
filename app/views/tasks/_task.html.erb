@@ -10,7 +10,7 @@
     </div>
     Completed pomodoros: <div class="pomodoros"><%= task.timers.count %></div>
 
-    <%= button_to "Start a new pomodoro for this task", user_task_timers_path(current_user, task), class: "start_button", remote: true %>
+    <%= button_to "Start a pomodoro", user_task_timers_path(current_user, task), class: "start_button", remote: true %>
 
     <div class="timer"></div>
     <%= button_to "Delete this task", user_task_path(current_user, task), class: "delete", method: "delete", remote: true %>

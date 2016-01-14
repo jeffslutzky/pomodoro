@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to user_path(current_user.id)
     else
+      flash.now[:alert] = "We don't seem to know that user. Please try logging in again, or click \"Sign up\" if you are a new user."
       render 'new'
     end
   end

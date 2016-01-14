@@ -1,5 +1,6 @@
 $(function(){
 
+// add a new task
   $(".new_task").on("ajax:success", function(event, data, status, xhr){
     $(this).find("input:text").val("");
     var template = $(data.template);
@@ -7,6 +8,7 @@ $(function(){
   })
 
 
+// submit an updated task name
   $(".container").on("blur", ".edit_task", function(){
     $(this).submit();
   })
@@ -30,6 +32,7 @@ $(function(){
   })
 
 
+// start a new pomodoro
   $(".container").on("click", ".start_button", function(){
     // hide all start buttons to avoid multiple pomodoros
     $(".start_button").addClass("hide_start_button");
@@ -53,7 +56,7 @@ $(function(){
         currentSeconds = "0" + currentSeconds;
       }
       secs--;
-      timer.html("<img class='img' src='<%= asset_path('pomodoro.png')%>'>" + currentMinutes + ":" + currentSeconds);
+      timer.html("<img class='img_timer' src='<%= asset_path('pomodoro.png')%>'>" + currentMinutes + ":" + currentSeconds);
       if (secs > -1) {
         setTimeout(countdown, 1000);
       } else {

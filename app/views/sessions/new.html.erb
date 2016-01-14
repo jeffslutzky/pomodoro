@@ -1,8 +1,5 @@
-<%= form_tag(login_path, method: 'post') do %>
-<%= label_tag :name %>
-<%= text_field_tag :name %>
-<%= label_tag :password %>
-<%= password_field_tag :password %>
-<%= submit_tag "Log in" %><br>
-<%= link_to "Sign up", signup_path %>
-<% end %>
+<%= render 'layouts/header' %>
+
+<p class="main">Welcome to Project Pomodoro</p>
+
+<img src="<%= asset_path('pomodoro.png') %>">
