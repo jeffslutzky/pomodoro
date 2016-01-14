@@ -30,6 +30,7 @@ $(function(){
     $(this).submit();
   })
 
+// $(".container").on("click", ".timer_button", (function(){
   $(".timer_button").click(function(){
     // get displayed number of pomodoros
     var total = parseInt($(this).parents(".task_form").children(".pomodoros").html());
