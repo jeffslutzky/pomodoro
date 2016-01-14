@@ -53,7 +53,7 @@ $(function(){
         currentSeconds = "0" + currentSeconds;
       }
       secs--;
-      timer.html(currentMinutes + ":" + currentSeconds);
+      timer.html("<img class='img' src='<%= asset_path('pomodoro.png')%>'>" + currentMinutes + ":" + currentSeconds);
       if (secs > -1) {
         setTimeout(countdown, 1000);
       } else {
