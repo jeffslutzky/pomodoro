@@ -6,9 +6,9 @@
 
   <div class="task_form" data-id="<%= task.id %>">
     <div class="task_name">
-      <%= task.name %><br />
+      <%= task.name %>
     </div>
-    Pomodoros completed: <div class="pomodoros"><%= task.pomodoros %></div>
+    Completed pomodoros: <div class="pomodoros"><%= task.pomodoros %></div>
     <%= button_to "Start a new pomodoro for this task", user_task_timers_path(current_user, task), class: "timer_button", remote: true %>
     <div class="timer"></div>
     <%= button_to "Delete this task", user_task_path(current_user, task), class: "delete", method: "delete", remote: true %>

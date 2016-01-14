@@ -1,8 +1,4 @@
 $(function(){
-  //click on task name to show update form
-  // $(".update").click(function(){
-  //   $(this).parent().addClass("editing");
-  // })
 
   $(".new_task").on("ajax:success", function(event, data, status, xhr){
     $(this).find("input:text").val("");
@@ -10,11 +6,13 @@ $(function(){
     $(".container").append(template);
   })
 
-  $("form.edit_task input:text").blur(function(){
+
+  $(".container").on("blur", ".edit_task", function(){
     $(this).submit();
   })
 
-  $(".edit_task").on("ajax:success", function(event, data, status, xhr){
+
+  $(".container").on("ajax:success", ".edit_task", function(event, data, status, xhr){
     // get the updated task name
     newName = $(data.template).find(".task_name").html();
     // change task name in HTML to the new name
@@ -24,11 +22,13 @@ $(function(){
     $(this).parents(".task_parent").removeClass("hide_name");
   })
 
+
+// show editing form when task name is clicked
   $(".container").on("click", ".task_name", function(){
-    // show the editing form and hide the presented name
     $(this).parents(".task_parent").addClass("hide_name");
     $(this).parents(".task_parent").removeClass("hide_form");
   })
+
 
   $(".container").on("click", ".timer_button", function(){
     // get displayed number of pomodoros
