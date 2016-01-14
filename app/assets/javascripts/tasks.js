@@ -11,13 +11,17 @@ $(function(){
   })
 
   $(".edit_task").on("ajax:success", function(event, data, status, xhr){
-    var template = $(data.template);
-    $(this).parents(".task_parent").find(".task_form").html($(template));
+    // get the updated task name
+    newName = $(data.template).find(".task_name").html();
+    // change task name in HTML to the new name
+    $(this).parents(".task_parent").find(".task_name").html(newName);
+    // hide the editing form and no longer hide the name
     $(this).parents(".task_parent").addClass("hide_form");
     $(this).parents(".task_parent").removeClass("hide_name");
   })
 
   $(".task_name").click(function(){
+    // show the editing form and hide the presented name
     $(this).parents(".task_parent").addClass("hide_name");
     $(this).parents(".task_parent").removeClass("hide_form");
   })
@@ -27,7 +31,6 @@ $(function(){
   })
 
   $(".timer_button").click(function(){
-
     // get displayed number of pomodoros
     var total = parseInt($(this).parents(".task_form").children(".pomodoros").html());
     var newTotal = total;
