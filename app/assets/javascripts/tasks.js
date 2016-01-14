@@ -1,13 +1,17 @@
 $(function(){
   //click on task name to show update form
-  $(".update").click(function(){
-    $(this).parent().addClass("editing");
-  })
+  // $(".update").click(function(){
+  //   $(this).parent().addClass("editing");
+  // })
 
   $(".new_task").on("ajax:success", function(event, data, status, xhr){
     $(this).find("input:text").val("");
     var template = $(data.template);
     $(".container").append(template);
+  })
+
+  $("form.edit_task input:text").blur(function(){
+    $(this).submit();
   })
 
   $(".edit_task").on("ajax:success", function(event, data, status, xhr){
@@ -20,14 +24,10 @@ $(function(){
     $(this).parents(".task_parent").removeClass("hide_name");
   })
 
-  $(".task_name").click(function(){
+  $(".container").on("click", ".task_name", function(){
     // show the editing form and hide the presented name
     $(this).parents(".task_parent").addClass("hide_name");
     $(this).parents(".task_parent").removeClass("hide_form");
-  })
-
-  $("form.edit_task input:text").blur(function(){
-    $(this).submit();
   })
 
   $(".container").on("click", ".timer_button", function(){
@@ -38,7 +38,7 @@ $(function(){
 
     // countdown timer
     timer = $(this).parent().siblings(".timer");
-    var mins = .1; // change to 25
+    var mins = .05; // change to 25
     var secs = mins * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
