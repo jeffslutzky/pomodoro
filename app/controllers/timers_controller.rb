@@ -4,18 +4,18 @@ class TimersController < ApplicationController
   end
 
   def create
-    timer = Timer.new
-    timer.task = Task.find(params[:task_id])
-    @task_id = params[:task_id]
-    timer.task.save
-    timer.save
     respond_to do |format|
-      format.js {render 'create'}
+      format.js
     end
   end
 
   def save
-    binding.pry
+    timer = Timer.new
+    timer.task = Task.find(params[:task_id])
+    timer.task.save
+    timer.save
+        binding.pry
+    redirect_to "users/show"
   end
 
   private
