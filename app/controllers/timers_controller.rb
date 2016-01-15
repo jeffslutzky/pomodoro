@@ -6,11 +6,16 @@ class TimersController < ApplicationController
   def create
     timer = Timer.new
     timer.task = Task.find(params[:task_id])
+    @task_id = params[:task_id]
     timer.task.save
     timer.save
     respond_to do |format|
-      format.js
+      format.js {render 'create'}
     end
+  end
+
+  def save
+    binding.pry
   end
 
   private

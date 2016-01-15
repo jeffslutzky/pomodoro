@@ -49,7 +49,7 @@ $(function(){
 
     // countdown timer
     timer = $(this).parent().siblings(".timer");
-    var secs = 25 * 60;
+    var secs = 5 // 25 * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
     setTimeout(countdown, 1000);
@@ -76,6 +76,7 @@ $(function(){
         timer.html("");
         $(".start_button").removeClass("hide_start_button");
         $(".timer").html("");
+        window.open("/controller/save?pomodoro="+pomodoro+"&task_id="+<%=@task_id || "0"%>,"_self")
         pomodoro = false;
       }
     }

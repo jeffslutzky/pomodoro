@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
+  get 'controller/save', to: 'timers#save'
   resources :users do
     resources :tasks do
       resources :timers
