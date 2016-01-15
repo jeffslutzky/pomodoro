@@ -14,8 +14,7 @@ class TimersController < ApplicationController
     timer.task = Task.find(params[:task_id])
     timer.task.save
     timer.save
-        binding.pry
-    redirect_to "users/show"
+    redirect_to user_path(current_user)
   end
 
   private

@@ -1,1 +1,7 @@
 $("[data-id=" + <%= @id %> + "]").parent().remove();
+
+// if the deleted task (@id) is the one underway, restore all start buttons:
+
+if (<%=@id%> === $(".img_timer").parents(".task_form").attr("data-id")) {
+  $(".start_button").removeClass("hide_start_button");
+}

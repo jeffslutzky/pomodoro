@@ -50,9 +50,14 @@ $(function(){
     var self = $(this);
 
     // countdown timer
+    var self = $(this);
+    // if in-progress task's delete button is clicked, remove pomodoro also
+    self.parent().siblings(".button_to").click(function(){
+      deleteCurrentPomodoro();
+    });
     var timer = $(this).parent().siblings(".timer");
     var task_id = $(this).parent().parent().attr("data-id");
-    var secs = 5 // 25 * 60;
+    var secs = 4 // 25 * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
     setTimeout(countdown, 1000);
@@ -66,7 +71,7 @@ $(function(){
       timer.html("<img class='img_timer' src='<%= asset_path('pomodoro.png')%>'>" + currentMinutes + ":" + currentSeconds);
       if (secs > -1) {
         setTimeout(countdown, 1000);
-      } else {
+      } else if (secs === -1) {
         newTotal++;
         // take a longer break every 4th pomodoro
         if (newTotal % 4 === 0) {
@@ -84,5 +89,15 @@ $(function(){
       }
     }
   })
+
+// if in-progress task is deleted, delete pomodoro in progress
+function deleteCurrentPomodoro(){
+  secs = -2;
+  pomodoro = false;
+  $(".start_button").removeClass("hide_start_button");
+  alert("You have deleted this task and the pomodoro will be stopped.");
+  window.location.reload();
+  };
+
 
 })
