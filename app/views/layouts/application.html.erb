@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
 <%= require 'statsd' %>
 <%= statsd = Statsd.new %>
 <%= statsd.increment('web.page_views') %>
