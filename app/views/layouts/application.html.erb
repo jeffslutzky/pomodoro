@@ -10,6 +10,10 @@
 </head>
 <body>
 
+<%= require 'statsd' %>
+<%= statsd = Statsd.new %>
+<%= statsd.increment('web.page_views') %>
+
 <div class="top_container">
   <%= yield %>
 </div>
