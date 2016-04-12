@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
+    require 'statsd'
+    statsd = Statsd.new
+    start_time = Time.now
+    duration = Time.now - start_time
+    statsd.histogram('web.page_views', duration)
   end
 
   def create
