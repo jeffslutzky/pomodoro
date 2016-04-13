@@ -4,15 +4,15 @@ class StaticPagesController < ApplicationController
   def about
     require 'statsd'
     statsd = Statsd.new
-    duration = Time.now - @start_time
-    statsd.histogram('database.query.time', duration, :tags => ['page:about'])
+    # duration = Time.now - @start_time
+    statsd.increment('web.page_views', :tags => ['page:about'])
   end
 
   def contact
     require 'statsd'
     statsd = Statsd.new
-    duration = Time.now - @start_time
-    statsd.histogram('database.query.time', duration, :tags => ['page:contact'])
+    # duration = Time.now - @start_time
+    statsd.increment('web.page_views', :tags => ['page:contact'])
   end
 
 private
