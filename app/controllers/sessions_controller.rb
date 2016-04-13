@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
     require 'statsd'
     statsd = Statsd.new
     duration = Time.now - @start_time
-    statsd.histogram('database.query.time', duration, :tags => ['page:main'])
+    # statsd.histogram('database.query.time', duration, :tags => ['page:main'])
+    statsd.increment('web.page_views')
   end
 
   def create
