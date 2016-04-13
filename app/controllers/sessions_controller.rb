@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
+  before_action :get_time
 
   def new
     require 'statsd'
     statsd = Statsd.new
-    start_time = Time.now
-    duration = Time.now - start_time
-    statsd.histogram('web.page_views', duration)
+    duration = Time.now - @start_time
+    statsd.histogram('database.query.time', duration, :tags => ['support'])
   end
 
   def create
@@ -22,6 +22,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_path
+  end
+
+
+private
+  def get_time
+    @start_time = Time.now
   end
 
 end
